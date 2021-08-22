@@ -20,6 +20,7 @@ struct ArgumentMatchingTests: tpunit::TestFixture {
 					TEST(ArgumentMatchingTests::test_eq_matcher), TEST(ArgumentMatchingTests::test_ge_matcher),
 					TEST(ArgumentMatchingTests::test_lt_matcher), TEST(ArgumentMatchingTests::test_le_matcher),
 					TEST(ArgumentMatchingTests::test_ne_matcher), TEST(ArgumentMatchingTests::test_gt_matcher),
+					TEST(ArgumentMatchingTests::test_str_eq_matcher),
 					TEST(ArgumentMatchingTests::test_any_matcher), TEST(ArgumentMatchingTests::test_any_matcher2),
 					TEST(ArgumentMatchingTests::test_any_matcher), TEST(ArgumentMatchingTests::format_Any),
 					TEST(ArgumentMatchingTests::test_any_matcher), TEST(ArgumentMatchingTests::format_Eq),
@@ -45,6 +46,7 @@ struct ArgumentMatchingTests: tpunit::TestFixture {
 		virtual int func(int) = 0;
 		virtual int func2(int, std::string) = 0;
         virtual int func3(const int&) = 0;
+        virtual int strfunc(const char*) = 0;
     };
 
 	void mixed_matchers() {
@@ -163,6 +165,21 @@ struct ArgumentMatchingTests: tpunit::TestFixture {
 
 		Verify(Method(mock, func).Using(Ne(1))).Once();
 		Verify(Method(mock, func).Using(Ne(10))).Twice();
+	}
+
+	void test_str_eq_matcher() {
+
+		Mock<SomeInterface> mock;
+
+		When(Method(mock, strfunc).Using(StrEq("first"))).Return(1);
+		When(Method(mock, strfunc).Using(StrEq("second"))).Return(2);
+
+		SomeInterface &i = mock.get();
+		ASSERT_EQUAL(1, i.strfunc("first"));
+		ASSERT_EQUAL(2, i.strfunc("second"));
+
+		Verify(Method(mock, strfunc).Using(StrEq("first"))).Once();
+		Verify(Method(mock, strfunc).Using(StrEq("second"))).Once();
 	}
 
 	void test_any_matcher() {
