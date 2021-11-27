@@ -82,6 +82,7 @@ struct CustomTestingFramework: tpunit::TestFixture {
 	}
 
 	struct SomeInterface {
+		virtual ~SomeInterface() = default;
 		virtual int func(int) = 0;
 	};
 

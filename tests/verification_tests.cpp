@@ -69,6 +69,7 @@ struct BasicVerification: tpunit::TestFixture {
 	}
 
 	struct SomeInterface {
+		virtual ~SomeInterface() = default;
 		virtual int func(int) = 0;
 		virtual void proc(int) = 0;
 		virtual void proc2(const A&) = 0;
@@ -495,6 +496,7 @@ struct BasicVerification: tpunit::TestFixture {
 	void verifyWithUnverifiedFunctor(){
 
         struct AnInterface {
+			virtual ~AnInterface() = default;
             virtual int func(int) = 0;
         };
         
@@ -521,6 +523,7 @@ struct BasicVerification: tpunit::TestFixture {
 	void verifyWithUnverifiedFunctorWithUsing() {
 
 		struct AnInterface {
+			virtual ~AnInterface() = default;
 			virtual int func(int) = 0;
 		};
 
@@ -537,6 +540,7 @@ struct BasicVerification: tpunit::TestFixture {
 	void verificationProgressShouldBeConvertibleToBool(){
 
 		struct AnInterface {
+			virtual ~AnInterface() = default;
 			virtual int func(int) = 0;
 		};
 
@@ -573,6 +577,7 @@ struct BasicVerification: tpunit::TestFixture {
 
 	void verificationShouldTolerateNullString(){
 		struct RefEater {
+			virtual ~RefEater() = default;
 			virtual int eatChar(char*) = 0;
 			virtual int eatConstChar(const char*) = 0;
 		};

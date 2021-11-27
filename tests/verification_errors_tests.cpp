@@ -40,6 +40,7 @@ using namespace fakeit;
 struct ErrorFormattingTests: tpunit::TestFixture {
 
 	struct SomeInterface {
+		virtual ~SomeInterface() = default;
 		virtual void foo(int) = 0;
 	};
 

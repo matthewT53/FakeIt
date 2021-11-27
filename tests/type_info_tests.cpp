@@ -28,6 +28,7 @@ struct TypeInfoTests : tpunit::TestFixture {
 	}
 
 	struct SomeInterface {
+		virtual ~SomeInterface() = default;
 		virtual int func(int) = 0;
 	};
 
@@ -38,11 +39,13 @@ struct TypeInfoTests : tpunit::TestFixture {
 
 	struct ConcreteType {
 		int demo;
+		virtual ~ConcreteType() = default;
 		virtual int f() { return 0; };
 	};
 
 	struct TopLeft {
 		int topLeft;
+		virtual ~TopLeft() = default;
 		virtual int l() = 0;
 	};
 
@@ -53,6 +56,7 @@ struct TypeInfoTests : tpunit::TestFixture {
 
 	struct TopRight {
 		int topRight;
+		virtual ~TopRight() = default;
 		virtual int r() = 0;
 	};
 

@@ -42,6 +42,7 @@ struct ArgumentMatchingTests: tpunit::TestFixture {
     }
 
 	struct SomeInterface {
+		virtual ~SomeInterface() = default;
 		virtual int func(int) = 0;
 		virtual int func2(int, std::string) = 0;
         virtual int func3(const int&) = 0;

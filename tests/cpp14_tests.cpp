@@ -27,6 +27,7 @@ struct Cpp14Tests : tpunit::TestFixture {
 	}
 
 	struct SomeInterface {
+		virtual ~SomeInterface() = default;
 		virtual int foo(int a, std::string bar) = 0;
 		virtual void bar(int a, std::string &bar) = 0;
 	};
@@ -73,6 +74,7 @@ struct Cpp14Tests : tpunit::TestFixture {
 
     void assingOutParamsWithLambdaCpp14(){
         struct ApiInterface {
+			virtual ~ApiInterface() = default;
             virtual bool apiMethod(int a, int b, int& result) = 0;
         };
 

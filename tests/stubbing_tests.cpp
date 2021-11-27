@@ -52,6 +52,7 @@ struct BasicStubbing : tpunit::TestFixture {
     }
 
     struct SomeInterface {
+        virtual ~SomeInterface() = default;
         virtual int func(int) = 0;
         virtual int funcNoArgs() = 0;
 
@@ -612,6 +613,7 @@ struct BasicStubbing : tpunit::TestFixture {
 
     void reset_mock_to_initial_state() {
         struct SomeInterface {
+            virtual ~SomeInterface() = default;
             virtual int func(int) = 0;
 
             std::string state;
@@ -651,6 +653,7 @@ struct BasicStubbing : tpunit::TestFixture {
 
     void use_lambda_to_change_ptr_value() {
         struct SomeClass {
+            virtual ~SomeClass() = default;
             virtual int foo(int *x) = 0;
         };
 
@@ -669,6 +672,7 @@ struct BasicStubbing : tpunit::TestFixture {
 
     void assingOutParamsWithLambda(){
         struct ApiInterface {
+            virtual ~ApiInterface() = default;
             virtual bool apiMethod(int a, int b, int& result) = 0;
         };
 

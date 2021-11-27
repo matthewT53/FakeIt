@@ -16,7 +16,7 @@ namespace fakeit {
     struct NoMoreInvocationsVerificationEvent;
 
     struct EventFormatter {
-
+        virtual ~EventFormatter() = default;
         virtual std::string format(const fakeit::UnexpectedMethodCallEvent &e) = 0;
 
         virtual std::string format(const fakeit::SequenceVerificationEvent &e) = 0;

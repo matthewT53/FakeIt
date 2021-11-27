@@ -13,6 +13,8 @@ namespace fakeit {
 
         unsigned int offset;
 
+        virtual ~VirtualOffsetSelector() = default;
+
         virtual unsigned int offset0(int) {
             return offset = 0;
         }

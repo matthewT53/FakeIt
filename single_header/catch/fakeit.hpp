@@ -2,7 +2,7 @@
 /*
  *  FakeIt - A Simplified C++ Mocking Framework
  *  Copyright (c) Eran Pe'er 2013
- *  Generated: 2021-05-12 13:47:04.979584
+ *  Generated: 2021-11-27 13:49:10.379999
  *  Distributed under the MIT License. Please refer to the LICENSE file at:
  *  https://github.com/eranpeer/FakeIt
  */
@@ -8959,7 +8959,7 @@ namespace fakeit {
 
     public:
 
-        ~SequenceVerificationProgress() THROWS { };
+        virtual ~SequenceVerificationProgress() THROWS { };
 
         operator bool() const {
             return Terminator(_expectationPtr);
