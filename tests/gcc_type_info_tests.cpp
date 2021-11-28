@@ -28,6 +28,7 @@ struct GccTypeInfoTests: tpunit::TestFixture {
 
 	struct TopLeft {
 		int topLeft;
+		virtual ~TopLeft() = default;
 		virtual int f()=0;
 	};
 
@@ -60,6 +61,7 @@ struct GccTypeInfoTests: tpunit::TestFixture {
 
 	struct TopRight {
 		int topRight;
+		virtual ~TopRight() = default;
 		virtual int f()=0;
 	};
 

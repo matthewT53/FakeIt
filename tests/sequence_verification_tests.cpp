@@ -30,6 +30,7 @@ struct SequenceVerification: tpunit::TestFixture {
 
 	class UserType {  };
 	struct SomeInterface {
+		virtual ~SomeInterface() = default;
 		virtual int func(int) = 0;
 		virtual void proc(int) = 0;
 		virtual void func2(UserType& a, int b) = 0;

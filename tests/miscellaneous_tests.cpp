@@ -35,10 +35,8 @@ struct Miscellaneous : tpunit::TestFixture
 
     struct SomeStruct
     {
-        SomeStruct(int)
-        {
-        }
-
+        explicit SomeStruct(int) {}
+        virtual ~SomeStruct() = default;
         virtual void foo() = 0;
     };
 
@@ -52,6 +50,7 @@ struct Miscellaneous : tpunit::TestFixture
     {
         struct SomeClass
         {
+            virtual ~SomeClass() = default;
             virtual void foo() = 0;
         protected:
             SomeClass(int)
@@ -77,6 +76,7 @@ struct Miscellaneous : tpunit::TestFixture
 
     struct Change
     {
+        virtual ~Change() = default;
         virtual void change(uint8_t r, uint8_t g, uint8_t b) = 0;
     };
 
@@ -97,6 +97,7 @@ struct Miscellaneous : tpunit::TestFixture
     struct A
     {
         //~A() = 0;
+        virtual ~A() = default;
         virtual int a1() = 0;
         virtual int a2() = 0;
     };
@@ -125,6 +126,7 @@ struct Miscellaneous : tpunit::TestFixture
     void testStubFuncWithRightValueParameter() {
 
         struct Foo {
+            virtual ~Foo() = default;
             virtual int bar(int &&) = 0;
         };
 
@@ -145,6 +147,7 @@ struct Miscellaneous : tpunit::TestFixture
     void testStubProcWithRightValueParameter() {
 
         struct Foo {
+            virtual ~Foo() = default;
             virtual void bar(int &&) = 0;
         };
 
@@ -170,7 +173,7 @@ struct Miscellaneous : tpunit::TestFixture
     }
 
     struct foo_bar {
-      virtual ~foo_bar() {}
+      virtual ~foo_bar() = default;
       virtual int foo() = 0;
       virtual int bar() = 0;
     };
@@ -206,6 +209,7 @@ struct Miscellaneous : tpunit::TestFixture
     template <typename T>
     class ClassToMock {
     public:
+        virtual ~ClassToMock() = default;
         virtual unsigned int method() {
             return 0;
         }
@@ -235,6 +239,7 @@ struct Miscellaneous : tpunit::TestFixture
     class IBase
     {
     public:
+        virtual ~IBase() = default;
         virtual void methodA() = 0;
     };
 
@@ -290,7 +295,8 @@ struct Miscellaneous : tpunit::TestFixture
 
 
     class HandlerBase
-    {};
+    {
+    };
 
     class TMessage {};
 
@@ -302,6 +308,7 @@ struct Miscellaneous : tpunit::TestFixture
             HandleMessage(message);
         }
 
+        virtual ~Handler() = default;
         virtual void HandleMessage(TMessage) {};
     };
 
@@ -314,6 +321,7 @@ struct Miscellaneous : tpunit::TestFixture
 	class Product {};
 	class IFactory {
 	public:
+        virtual ~IFactory() = default;
 		virtual std::unique_ptr<Product>Create() = 0;
 	};
 		

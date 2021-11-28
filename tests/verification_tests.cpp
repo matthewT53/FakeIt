@@ -388,9 +388,8 @@ struct BasicVerification: tpunit::TestFixture {
 		mock.get().func(1);
 		{
 			try {
-				const auto a = VerifyNoOtherInvocations(Method(mock,func));
-				if (&a == &a) // use a to avoid unused variable compilation warning.
-					throw std::runtime_error("some exception");
+				VerifyNoOtherInvocations(Method(mock,func));
+				throw std::runtime_error("some exception");
 			} catch (std::runtime_error &) {
 			}
 		}
@@ -401,10 +400,8 @@ struct BasicVerification: tpunit::TestFixture {
 		Fake(Method(mock,func));
 		{
 			try {
-				const auto a = Verify(Method(mock,func));
-				//const auto b = Verify(Method(mock, func)).Exactly(1);
-				if (&a == &a) // use a to avoid unused variable compilation warning.
-					throw std::runtime_error("some exception");
+				Verify(Method(mock,func));
+				throw std::runtime_error("some exception");
 			} catch (std::runtime_error &) {
 			}
 		}

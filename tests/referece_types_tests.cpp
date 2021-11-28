@@ -18,6 +18,7 @@ struct ReferenceTypesTests: tpunit::TestFixture {
 
 	class AbstractType {
 	public:
+		virtual ~AbstractType() = default;
 		virtual void foo() = 0;
 	};
 
@@ -37,6 +38,7 @@ struct ReferenceTypesTests: tpunit::TestFixture {
 	};
 
 	struct ReferenceInterface {
+		virtual ~ReferenceInterface() = default;
 		virtual int& returnIntByRef() = 0;
 		virtual AbstractType& returnAbstractTypeByRef() = 0;
 		virtual ConcreteType& returnConcreteTypeByRef() = 0;

@@ -30,6 +30,7 @@ struct GccMultipleStubbing: tpunit::TestFixture {
 	}
 
 	struct SomeInterface {
+		virtual ~SomeInterface() = default;
 		virtual int func(int) = 0;
 		virtual void proc(int) = 0;
 	};

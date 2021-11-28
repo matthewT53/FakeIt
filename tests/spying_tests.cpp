@@ -34,6 +34,7 @@ struct SpyingTests: tpunit::TestFixture {
 	class SomeClass {
 	public:
 		int a;
+		virtual ~SomeClass() = default;
 		virtual int func1(int arg) {
 			return arg;
 		}
@@ -102,7 +103,7 @@ struct SpyingTests: tpunit::TestFixture {
 			SomeClass() :
 					deleted(false) {
 			}
-			~SomeClass() {
+			virtual ~SomeClass() {
 				deleted = true;
 			}
 			virtual int func(int arg) {
@@ -169,6 +170,8 @@ struct SpyingTests: tpunit::TestFixture {
 
     class Dummy {
     public:
+		virtual ~Dummy() = default;
+
         virtual void method() {
             printf("Method called\n");
         }

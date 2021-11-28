@@ -9,6 +9,7 @@ struct RValueTypesTests : tpunit::TestFixture {
 
     class AbstractType {
     public:
+        virtual ~AbstractType() = default;
         virtual void foo() = 0;
     };
 
@@ -29,6 +30,7 @@ struct RValueTypesTests : tpunit::TestFixture {
     using CompositeType = std::pair < int, int > ;
 
     struct RValueInterface {
+        virtual ~RValueInterface() = default;
         virtual int intRValueArg(int&&) = 0;
         virtual int compositeRValueArg(CompositeType&&) = 0;
         virtual int overloadedMethod(CompositeType&&) = 0;

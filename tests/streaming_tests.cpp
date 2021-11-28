@@ -29,6 +29,7 @@ struct StreamingTests : tpunit::TestFixture {
     };
 
 	struct SomeInterface {
+        virtual ~SomeInterface() = default;
 		virtual void func(SomeEnum) = 0;
 	};
     

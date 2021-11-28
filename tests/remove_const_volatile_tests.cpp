@@ -26,6 +26,7 @@ public:
 		}
 
 		struct ConstVolatileFunctions{
+			virtual ~ConstVolatileFunctions() = default;
 			virtual int func1() const = 0;
 			virtual int func2() volatile = 0;
 			virtual int func3() const volatile = 0;
@@ -82,6 +83,7 @@ public:
 		}
 
 		struct ConstVolatileParameters{
+			virtual ~ConstVolatileParameters() = default;
 			virtual int func1(const int a, const volatile std::string s) = 0;
 		};
 

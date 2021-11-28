@@ -113,7 +113,7 @@ struct DtorMocking : tpunit::TestFixture
 	}
 
 	struct NoVirtualDestructor {
-		~NoVirtualDestructor() {}
+		virtual ~NoVirtualDestructor() = default;
 		virtual void foo() = 0;
 	};
 

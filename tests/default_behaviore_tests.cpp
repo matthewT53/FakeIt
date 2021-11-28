@@ -36,6 +36,7 @@ struct DefaultBehavioreTests : tpunit::TestFixture {
 	};
 
 	struct ScalarFunctions {
+		virtual ~ScalarFunctions() = default;
 		virtual bool boolFunc() = 0;
 		virtual char charFunc() = 0;
 		virtual char16_t char16Func() = 0;
@@ -60,6 +61,7 @@ struct DefaultBehavioreTests : tpunit::TestFixture {
 	};
 
 	struct DefaultConstructibleFunctions {
+		virtual ~DefaultConstructibleFunctions() = default;
 		virtual std::string stringfunc() = 0;
 	};
 
@@ -75,11 +77,13 @@ struct DefaultBehavioreTests : tpunit::TestFixture {
 	};
 
 	struct NonDefaultConstructibleFunctions {
+		virtual ~NonDefaultConstructibleFunctions() = default;
 		virtual NotDefaultConstructible notDefaultConstructibleFunc() = 0;
 	};
 
 	struct ReferenceFunctions {
 		ReferenceFunctions() = default;
+		virtual ~ReferenceFunctions() = default;
 		virtual int& scalarFunc() = 0;
 		virtual std::string& stringFunc() = 0;
 		virtual NotDefaultConstructible& notDefaultConstructibleFunc() = 0;
@@ -135,6 +139,7 @@ struct DefaultBehavioreTests : tpunit::TestFixture {
 	}
 
 	struct VoidFunctions {
+		virtual ~VoidFunctions() = default;
 		virtual void proc1() = 0;
 		virtual void proc2(int a) = 0;
 	};
