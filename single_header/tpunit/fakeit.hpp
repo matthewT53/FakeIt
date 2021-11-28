@@ -2,7 +2,7 @@
 /*
  *  FakeIt - A Simplified C++ Mocking Framework
  *  Copyright (c) Eran Pe'er 2013
- *  Generated: 2021-11-27 13:49:09.942587
+ *  Generated: 2021-11-28 13:46:02.789516
  *  Distributed under the MIT License. Please refer to the LICENSE file at:
  *  https://github.com/eranpeer/FakeIt
  */
@@ -739,6 +739,7 @@ namespace fakeit {
 namespace fakeit {
 
     struct VerificationEventHandler {
+        virtual ~VerificationEventHandler() = default;
         virtual void handle(const SequenceVerificationEvent &e) = 0;
 
         virtual void handle(const NoMoreInvocationsVerificationEvent &e) = 0;
@@ -747,6 +748,7 @@ namespace fakeit {
     struct EventHandler : public VerificationEventHandler {
         using VerificationEventHandler::handle;
 
+        virtual ~EventHandler() = default;
         virtual void handle(const UnexpectedMethodCallEvent &e) = 0;
     };
 
@@ -761,7 +763,7 @@ namespace fakeit {
     struct NoMoreInvocationsVerificationEvent;
 
     struct EventFormatter {
-
+        virtual ~EventFormatter() = default;
         virtual std::string format(const fakeit::UnexpectedMethodCallEvent &e) = 0;
 
         virtual std::string format(const fakeit::SequenceVerificationEvent &e) = 0;
@@ -1241,6 +1243,8 @@ namespace fakeit {
     struct VirtualOffsetSelector {
 
         unsigned int offset;
+
+        virtual ~VirtualOffsetSelector() = default;
 
         virtual unsigned int offset0(int) {
             return offset = 0;
@@ -5897,6 +5901,8 @@ namespace fakeit {
     struct InvocationHandlerCollection {
         static const unsigned int VT_COOKIE_INDEX = 0;
 
+        virtual ~InvocationHandlerCollection() = default;
+
         virtual Destructible *getInvocatoinHandlerPtrById(unsigned int index) = 0;
 
         static InvocationHandlerCollection *getInvocationHandlerCollection(void *instance) {
@@ -7442,6 +7448,7 @@ namespace fakeit {
 namespace fakeit {
 
     struct Xaction {
+        virtual ~Xaction() = default;
         virtual void commit() = 0;
     };
 }
